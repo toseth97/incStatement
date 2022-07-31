@@ -1,5 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,900&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,500;1,700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+body{
+  width: 100%;
+  display: flex;
+  height: 100vh;
+}
+#root{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.summaryUI{
+  height: 30vh;
+  background-image: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.6)), url("../public/image/background\ main.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.summaryUI, .summaryUI section{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.bal{
+  display: flex;
+  align-items: center;
+  padding: .5rem 5rem;
+  background-color: antiquewhite;
+}
+.summaryUI section div h2{
+  margin: 0 .5rem;
+  font-size: 2rem;
+  
+}
+.inc_exp_sum{
+  margin: 1rem 0;
+  padding: .5rem;
+  display: flex;
+  background-color: blueviolet;
+}
+.inc_sum, .exp_sum{
+  display: flex;
+  margin: 0 2rem;
+ 
+}
+.inc_sum p , .exp_sum p{
+  margin: 0 1rem;
+  color: aliceblue;
+  font-size: 1.2rem;
 }
