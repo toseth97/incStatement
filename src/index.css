@@ -8,7 +8,7 @@
 body{
   width: 100%;
   display: flex;
-  height: 100vh;
+  overflow-x: hidden;
 }
 #root{
   flex-grow: 1;
@@ -18,17 +18,98 @@ body{
 }
 .App{
   width: 100%;
-  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
  
 }
 
+/****Loading animation****/
+
+.isloading_main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+}
+.isloading_main h2{
+  margin: 5rem 0;
+  color: #7E106D;
+  font-style: italic;
+  text-align: center;
+  font-size: 1rem;
+}
+.loading{
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  border-radius: 50%;
+  background-image: linear-gradient(white, white);
+  position: relative;
+  overflow: hidden;
+  
+}
+.loading::before{
+  position: absolute;
+  width: 150px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border-radius: 50%;
+  content: "";
+  height: 150px;
+  color: #7E106D;
+  background-image: conic-gradient(transparent, transparent, #7E106D);
+  animation: loading 1s infinite linear;
+}
+.loading::after{
+  position: absolute;
+  width: 130px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  content: "";
+  height: 130px;
+  color: #7E106D;
+  border-radius: 50%;
+  background-image: conic-gradient(white, white);
+}
+
+@keyframes loading {
+  100%{
+    transform: rotate(360deg);
+  }
+  
+}
+
+.not_ready{
+  transform: scale(0);
+}
+.not_ready{
+  transform: scale(1);
+  transform: .5s ease;
+}
+
+
+
+
 .summaryUI{
-  height: 30vh;
-  background-image: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.6)), url("../public/image/background\ main.jpg");
+  padding: 5rem 0 2rem;
+  background-image: linear-gradient(135deg, #5233ce, #7E106D ,#7E106D );
   background-size: cover;
   background-position: center;
+  position: relative;
+  overflow: hidden;
+  
+  
 }
 .summaryUI, .summaryUI section{
   width: 100%;
@@ -37,22 +118,118 @@ body{
   justify-content: center;
   flex-direction: column;
 }
-.bal{
+.circle1{
+  width: 200px;
+  height: 200px;
+  border: 3px dashed rgba(255, 255, 255, 0.479);
+  position: absolute;
+  border-radius: 50%;
+  opacity: .4;
+  top: -20px;
+  left: 0;
+  animation: circle1 20s infinite linear;
+}
+.circle2{
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  background-image: linear-gradient(90deg, rgba(255,255,255,.3), transparent, transparent);
+  transform: rotate(135deg);
+  top: 400px;
+  right: 20px;
+}
+.circle3{
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  border-radius: 20px;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.116), transparent, transparent);
+  top: 100px;
+  right: -100px;
+}
+.circle4{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.116);
+  filter: blur(5px);
+  top: 100px;
+  left: 400px;
+}
+.circle5{
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  position: absolute;
+  background-color:rgba(255, 255, 255, 0.116);
+  filter: blur(5px);
+  top: 100px;
+  right: 400px;
+}
+
+
+@keyframes circle1 {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: .4;
+  }
+  100%{
+    transform: scale(2) rotate(365deg);
+    opacity: 0;
+  }
+  
+}
+
+.links{
+  color: #fff;
+  margin: 0 .4rem;
+  font-size: 2rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.social{
+  width: 50px;
+  height: 50px;
+  margin: 0 .5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #49053f;
+}
+.social_div{
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bal{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
   padding: .5rem 5rem;
-  background-color: antiquewhite;
+  color: #fff;
 }
 .summaryUI section div h2{
-  margin: 0 .5rem;
-  font-size: 2rem;
+  margin: 1rem .5rem;
+  font-size: 2.4rem;
+  font-weight: bolder;
   
 }
 .inc_exp_sum{
   margin: 1rem 0;
-  padding: .5rem;
+  padding: 1rem;
+  border-radius: 10px;
   display: flex;
-  background-color: blueviolet;
+  background-color: rgba(0, 0, 0, 0.596);
+  
 }
 .inc_sum, .exp_sum{
   display: flex;
@@ -63,4 +240,271 @@ body{
   margin: 0 1rem;
   color: aliceblue;
   font-size: 1.2rem;
+}
+.cost_percentage{
+  width: 100%;
+  padding-top: 2rem ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.positive, .negative{
+  height: 50px;
+  width: 70px;
+  font-size: .8rem;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  filter: drop-shadow(0px 0 10px rgb(0, 0, 0));
+}
+.positive{
+  color: rgb(19, 141, 3);
+  background-color: rgb(183, 243, 175);
+}
+.negative{
+  color: rgb(141, 0, 0);
+  background-color: rgb(238, 177, 177);
+}
+
+/************INPUT SECTION***********/
+.input_main{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  flex-direction: column;
+  position: relative;
+}
+.input_form{
+  width: 80%;
+  display: flex;
+}
+.addDescription, .input_form select{
+  font-size: 1.1rem;
+  padding: 0 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #7E106D;
+  text-align: center;
+}
+.addValue{
+  font-size: 1.1rem;
+  outline: none;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #7E106D;
+  
+}
+.addDescription{
+  flex-grow: 1;
+  margin: 0 1.5rem;
+}
+.submit{
+  margin-left: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #7E106D;
+}
+.notification_error, .notification_success{
+  transition: .3s ease;
+  padding: .5rem 1rem;
+  position: absolute;
+  border-radius: 10px;
+  bottom: -2rem;
+}
+.notification_error{
+  background-color: rgba(238, 177, 177, 0.836);
+  color: rgb(141, 0, 0);
+}
+.notification_success{
+  background-color: rgba(183, 243, 175, 0.849);
+  color: rgb(19, 141, 3);
+}
+
+
+
+/*******REPORT SECTION********/
+.date{
+  font-size: .8rem;
+}
+.emptyData{
+  margin-top: 5rem;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+.display_report{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  gap: 1rem;
+}
+.Income_main_report, .Expense_main_report{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+
+.each_report{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  padding: .5rem 2rem;
+  border-radius: 10px;
+  margin: .5rem 0;
+  font-size: 1.1rem;
+}
+.allExpense_main p,  .allIncome_main p{
+  margin: 0 1rem;
+}
+.allExpense_main{
+  background-color: rgb(238, 177, 177);
+  color: rgb(141, 0, 0);
+}
+.allIncome_main{
+  background-color: rgb(183, 243, 175);
+  color: rgb(19, 141, 3);
+}
+.description{
+  flex-grow: 1;
+  text-transform: capitalize;
+}
+
+.btn{
+  padding: .5rem;
+  margin: 0 1rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+
+
+@media screen and (max-width: 900px){
+  .input_form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .addValue, .addDescription, .input_form select{
+   width: 100%;
+   margin: 1rem 0;
+  }
+  .circle2{
+    filter: blur(5px);
+    top: 100px;
+
+  }
+  .circle4{
+    top: 100px;
+    left: 100px;
+  }
+  .circle5{
+    width: 30rem;
+    height: 30rem;
+    top: 300px;
+    left: 10px;
+  }
+  .bal{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: .5rem;
+  }
+  
+  
+
+  .summaryUI section div h2{
+    margin:.5rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    
+  }
+  
+  .inc_exp_sum{
+    flex-direction: column;
+    background-color: transparent;
+    
+  }
+  .inc_sum, .exp_sum{
+    margin: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.596);
+    padding: 1rem;
+   
+  }
+  .inc_sum p , .exp_sum p{
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+  }
+  .submit{
+    font-size: 3.5rem;
+  }
+  .display_report{
+    flex-direction: column;
+    width: 90%;
+    gap: 2rem;
+  }
+  .Income_main_report, .Expense_main_report{
+    height: 30vh;
+    overflow: scroll;
+  }
+  
+}
+@media screen and (max-width: 550px) {
+  .summaryUI section div h2{
+    margin:.5rem;
+    width: 100%;
+    font-size: 1.8rem;
+    font-weight: bolder;
+    
+  }
+  .display_report{
+    flex-direction: column;
+    width: 95%;
+    gap: 1rem;
+  }
+  .btn{
+    margin: 0 .5rem;
+    font-size: 1.2rem;
+  }
+  .each_report{
+    padding: .5rem 1rem;
+
+  }
+  
+}
+
+
+@media screen and (max-width: 350px){
+  
+  .inc_exp_sum{
+    margin: .2rem 0;
+    padding: .2rem;
+    width: 100%;
+    display: flex;
+    background-color: transparent;
+  }
+  .inc_sum, .exp_sum{
+    display: flex;
+    margin: .5rem;
+   
+  }
+  .inc_sum p , .exp_sum p{
+    margin:  0 .3rem;
+    color: aliceblue;
+    
+  }
+  
 }
